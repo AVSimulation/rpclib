@@ -163,8 +163,9 @@ struct client::impl {
 client::client(std::string const &addr, uint16_t port)
     : pimpl(new client::impl(this, addr, port)) {
     tcp::resolver resolver(pimpl->io_);
+    tcp::resolver::query query(addr,std::to_string(port),tcp::resolver::query::canonical_name);
     auto endpoint_it =
-        resolver.resolve({pimpl->addr_, std::to_string(pimpl->port_)});
+        resolver.resolve(query);
     pimpl->do_connect(endpoint_it);
     std::thread io_thread([this]() {
         RPCLIB_CREATE_LOG_CHANNEL(client)

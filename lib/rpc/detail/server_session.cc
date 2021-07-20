@@ -29,7 +29,10 @@ server_session::server_session(server *srv, RPCLIB_ASIO::io_service *io,
                                               // [sztomi 2016-01-13]
 }
 
-void server_session::start() { do_read(); }
+void server_session::start() { 
+    on_connected();
+    do_read(); 
+}
 
 void server_session::close() {
     LOG_INFO("Closing session.");

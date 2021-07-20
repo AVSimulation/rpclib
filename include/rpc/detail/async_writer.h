@@ -72,6 +72,11 @@ public:
         do_write();
     }
 
+    void on_connected()
+    {
+        socket_.set_option(RPCLIB_ASIO::ip::tcp::no_delay(true));
+    }
+
     friend class rpc::client;
 
 protected:

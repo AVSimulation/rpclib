@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.9.0)
 project(rpc VERSION 2.2.1)
 
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake")
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 include(policies)
 include(msvc_support)
